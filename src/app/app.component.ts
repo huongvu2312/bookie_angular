@@ -8,7 +8,9 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   optionLoaded = 'recipes';
+
   onNavigation(option: string) {
     this.optionLoaded = option;
   }
+
 }
