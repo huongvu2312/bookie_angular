@@ -1,4 +1,4 @@
-<h1>Stopped Book</h1>
+<h1>Dropped Book</h1>
 <input type="text" [(ngModel)]="value1" />
 <input type="text" [(ngModel)]="value2" />
 <input type="text" [(ngModel)]="value3" />
@@ -11,63 +11,63 @@
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Name</th>
       <td mat-cell *matCellDef="let element">
-        <div *ngIf="!didEditRow">{{ element.name }}</div>
-        <div *ngIf="didEditRow">
+        <div *ngIf="didEditRow != element.id">{{ element.name }}</div>
+        <div *ngIf="didEditRow == element.id">
           <input type="text" value="{{ element.name }}" [(ngModel)]="element.name"/>
         </div>
       </td>
     </ng-container>
 
-    <!-- Position Column -->
+    <!-- Author Column -->
     <ng-container matColumnDef="author">
       <th mat-header-cell *matHeaderCellDef>Author</th>
       <td mat-cell *matCellDef="let element">
-        <div *ngIf="!didEditRow">{{ element.author }}</div>
-        <div *ngIf="didEditRow">
+        <div *ngIf="didEditRow != element.id">{{ element.author }}</div>
+        <div *ngIf="didEditRow == element.id">
           <input type="text" value="{{ element.author }}" [(ngModel)]="element.author"/>
         </div>
       </td>
     </ng-container>
 
-    <!-- Weight Column -->
+    <!-- Start Date Column -->
     <ng-container matColumnDef="startDate">
       <th mat-header-cell *matHeaderCellDef>Start Date</th>
       <td mat-cell *matCellDef="let element">
-        <div *ngIf="!didEditRow">{{ element.startDate }}</div>
-        <div *ngIf="didEditRow">
+        <div *ngIf="didEditRow != element.id">{{ element.startDate }}</div>
+        <div *ngIf="didEditRow == element.id">
           <input type="text" value="{{ element.startDate }}" [(ngModel)]="element.startDate"/>
         </div>
       </td>
     </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="endDate">
-      <th mat-header-cell *matHeaderCellDef>End Date</th>
+    <!-- Stop Date Column -->
+    <ng-container matColumnDef="stopDate">
+      <th mat-header-cell *matHeaderCellDef>Dropped Date</th>
       <td mat-cell *matCellDef="let element">
-        <div *ngIf="!didEditRow">{{ element.endDate }}</div>
-        <div *ngIf="didEditRow">
-          <input type="text" value="{{ element.endDate }}" [(ngModel)]="element.endDate"/>
+        <div *ngIf="didEditRow != element.id">{{ element.stopDate }}</div>
+        <div *ngIf="didEditRow == element.id">
+          <input type="text" value="{{ element.stopDate }}" [(ngModel)]="element.stopDate"/>
         </div>
       </td>
     </ng-container>
 
-    <!-- Star Column -->
+    <!-- Action Column -->
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let element">
-        <div *ngIf="!didEditRow">
-          <button class="btn btn-default" (click)="editRow(didEditRow)">
+        <div *ngIf="didEditRow != element.id">
+          <button class="btn btn-default" (click)="editRow(element.id)">
             Edit
           </button>
-          <button class="btn btn-default" (click)="deleteRow(element.id)">
-            Delete
+          <button class="btn btn-default" (click)="readAgainRow(element)">
+            Start Reading Again
           </button>
         </div>
-        <div *ngIf="didEditRow">
-            <button class="btn btn-default" (click)="saveEditedRow()">
+        <div *ngIf="didEditRow == element.id">
+            <button class="btn btn-default" (click)="saveEditedRow(element)">
                 <i class="fas fa-check-circle"></i>
             </button>
-            <button class="btn btn-default" (click)="editRow(didEditRow)">
+            <button class="btn btn-default" (click)="cancelEditRow()">
                 <i class="far fa-window-close"></i>
             </button>
           </div>

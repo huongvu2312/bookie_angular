@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from '../model/user.model';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-login',
@@ -9,9 +11,11 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent implements OnInit {
+  users: User[];
   loginForm: FormGroup;
+  database: string = 'users';
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private apiService: ApiService, private fb: FormBuilder, private router: Router) {
     this.createForm();
   }
 
@@ -26,9 +30,17 @@ export class LoginComponent implements OnInit {
   }
 
   onClickSubmit(username, password) {
-    if (this.loginForm.valid && username === 'vu' && password === '2312') {
-      // go to home page
-      this.router.navigate(['/home']);
+    if (this.loginForm.valid) {
+      this.apiService.get(this.database).subscribe((data: any[]) => {
+        console.log(data);
+        this.users = data;
+        for (let user of this.users) {
+          if (user.username == username && user.pass == password) {
+            // go to home page
+            this.router.navigate(['/home']);
+          }
+        }
+      });
     } else {
       alert('Hey your username or password is wrong');
     }

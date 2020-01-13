@@ -3,7 +3,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material';
 import { FinishedBook } from '../model/finishedBook.model';
 import { ApiService } from '../api.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-finished-book',
@@ -21,12 +20,13 @@ export class FinishedBookComponent implements OnInit {
   value2 = '';
   value3 = '';
   value4 = '';
-  didEditRow: boolean = false;
+  didEditRow: number;
+  database: string = 'finishedBooks';
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    this.apiService.get().subscribe((data: any[]) => {
+    this.apiService.get(this.database).subscribe((data: any[]) => {
       console.log(data);
       this.books = data;
       this.dataSource = new MatTableDataSource(this.books);
@@ -36,15 +36,14 @@ export class FinishedBookComponent implements OnInit {
 
   addRow() {
     const newBook = { id: this.books.length + 1, name: this.value1, author: this.value2, startDate: this.value3, endDate: this.value4 };
-    this.apiService.post(newBook).subscribe(() => {
+    this.apiService.post(this.database, newBook).subscribe(() => {
       window.location.reload();
     });
-
   }
 
   deleteRow(index) {
-    this.apiService.delete(index).subscribe(() => {
-      this.apiService.get().subscribe((data: any[]) => {
+    this.apiService.delete(this.database, index).subscribe(() => {
+      this.apiService.get(this.database).subscribe((data: any[]) => {
         console.log(data);
         this.books = data;
         this.dataSource = new MatTableDataSource(this.books);
@@ -53,14 +52,22 @@ export class FinishedBookComponent implements OnInit {
     });
   }
 
-  editRow(der) {
-    if (der === true) {
-      return this.didEditRow = false;
-    }
-    return this.didEditRow = true;
+  editRow(index) {
+    return this.didEditRow = index;
   }
 
-  saveEditedRow() {
-    return this.didEditRow = false;
+  cancelEditRow() {
+    return this.didEditRow = -1;
+  }
+
+  saveEditedRow(element) {
+    this.apiService.put(this.database, element).subscribe(() => {
+      this.apiService.get(this.database).subscribe((data: any[]) => {
+        this.books = data;
+        this.dataSource = new MatTableDataSource(this.books);
+        this.dataSource.paginator = this.paginator;
+        this.didEditRow = -1;
+      });
+    });
   }
 }
