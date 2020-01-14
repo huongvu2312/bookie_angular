@@ -8,13 +8,13 @@ import { Router, NavigationStart } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   @Output() optionSelected = new EventEmitter<string>();
-  isLogin: boolean;
+  isLogin: boolean = false;
 
   constructor(private router: Router) {
     // on route change to '/login', set the variable isLogin to false
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
-        if (event.url === '/login' || event.url === '/register') {
+        if (event.url === '/login' || event.url === '/register' || event.url === '/') {
           this.isLogin = false;
         } else {
           this.isLogin = true;

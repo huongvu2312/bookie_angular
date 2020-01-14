@@ -1,10 +1,14 @@
 <h1>Login</h1>
 <form [formGroup]="loginForm">
   <div class="form-group">
-    <label>
-      Username:
-      <input type="text" formControlName="username" required #username/>
-    </label>
+    <label> Username:</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="username"
+      required
+      #username
+    />
   </div>
   <div
     *ngIf="
@@ -19,10 +23,14 @@
     </div>
   </div>
   <div class="form-group">
-    <label>
-      Password:
-      <input type="password" formControlName="password" required #password/>
-    </label>
+    <label> Password: </label>
+    <input
+      type="password"
+      class="form-control"
+      formControlName="password"
+      required
+      #password
+    />
   </div>
   <div
     *ngIf="
@@ -40,7 +48,7 @@
   <button
     type="submit"
     [disabled]="!loginForm.valid"
-    class="btn btn-default"
+    class="btn btn-primary"
     (click)="onClickSubmit(username.value, password.value)"
   >
     Login
