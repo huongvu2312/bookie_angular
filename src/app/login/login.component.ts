@@ -32,17 +32,21 @@ export class LoginComponent implements OnInit {
   onClickSubmit(username, password) {
     if (this.loginForm.valid) {
       this.apiService.get(this.database).subscribe((data: any[]) => {
+        let foundUser: boolean = false;
         console.log(data);
         this.users = data;
         for (let user of this.users) {
           if (user.username == username && user.pass == password) {
+            foundUser = true;
             // go to home page
             this.router.navigate(['/home']);
           }
         }
+
+        if(!foundUser) {
+          alert('Hey your username or password is wrong');
+        }
       });
-    } else {
-      alert('Hey your username or password is wrong');
     }
   }
 
