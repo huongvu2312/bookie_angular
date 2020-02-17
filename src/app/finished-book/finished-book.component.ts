@@ -27,7 +27,6 @@ export class FinishedBookComponent implements OnInit {
 
   ngOnInit() {
     this.apiService.get(this.database).subscribe((data: any[]) => {
-      console.log(data);
       this.books = data;
       this.dataSource = new MatTableDataSource(this.books);
       this.dataSource.paginator = this.paginator;
@@ -37,14 +36,22 @@ export class FinishedBookComponent implements OnInit {
   addRow() {
     const newBook = { id: this.books.length + 1, name: this.value1, author: this.value2, startDate: this.value3, endDate: this.value4 };
     this.apiService.post(this.database, newBook).subscribe(() => {
-      window.location.reload();
+      // window.location.reload();
+      this.apiService.get(this.database).subscribe((data: any[]) => {
+        this.books = data;
+        this.dataSource = new MatTableDataSource(this.books);
+        this.dataSource.paginator = this.paginator;
+      });
+      this.value1 = '';
+      this.value2 = '';
+      this.value3 = '';
+      this.value4 = '';
     });
   }
 
   deleteRow(index) {
     this.apiService.delete(this.database, index).subscribe(() => {
       this.apiService.get(this.database).subscribe((data: any[]) => {
-        console.log(data);
         this.books = data;
         this.dataSource = new MatTableDataSource(this.books);
         this.dataSource.paginator = this.paginator;

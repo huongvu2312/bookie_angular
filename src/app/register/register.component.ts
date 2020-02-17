@@ -32,11 +32,10 @@ export class RegisterComponent implements OnInit {
       const users = data;
       const user = {
         id: users.length + 1,
-        name: this.registerForm.controls['username'].value,
-        pass: this.registerForm.controls['password'].value,
-        email: this.registerForm.controls['email'].value
+        username: this.registerForm.controls.username.value,
+        pass: this.registerForm.controls.password.value,
+        email: this.registerForm.controls.email.value
       };
-      console.log(user);
       this.apiService.post('users', user).subscribe(() => {
       });
     });

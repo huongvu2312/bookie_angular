@@ -8,7 +8,7 @@ var database = {
   users: []
 };
 
-for (var i = 1; i<= 50; i++) {
+for (var i = 1; i<= 1000; i++) {
   database.finishedBooks.push({
     id: i,
     name: faker.lorem.words(),
