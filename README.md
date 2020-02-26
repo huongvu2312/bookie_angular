@@ -59,7 +59,7 @@ in backend folder.
 
 ## Live action
 
-![Book GIF](https://media.giphy.com/media/ftqS2jVIncVf49Yveu/giphy.gif)
+![Book GIF](https://media.giphy.com/media/huVL10nTHQW0KPK37H/giphy.gif)
 
 ## Note
 
