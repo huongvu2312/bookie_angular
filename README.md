@@ -1,37 +1,29 @@
-# Bookie
+# Bookie - Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.17.
+A book management application built with [Angular 8.3.17](https://github.com/angular/angular)
 
-## Development server
+## Getting Started
+
+### Prerequisites
+
+* [Node.js](https://nodejs.org/en/)
+* [MongoDB](https://www.mongodb.com/)
+
+### Deploying
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+The page will reload if you make edits.<br />
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+After that, run `npm run server` in another terminal or `nodemon server` in backend folder, depending on the database you want to use.
 
-## Build
+Note: axios link in components (especially login and register components) needs to be changed depending on the choosen database.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+For JSON server, the link would be "localhost:3000".
 
-## Running unit tests
+For MongoDB, the link would be "localhost:5000".
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-These folder belowed just stayed as study purpose of Angular 8.
-These are no relationship whatsoever between them and the bookie app.
-
-- recipe
-- shopping list
-- shared/ingredient.model
+Test account is **vu**, password is **2312**.
 
 ### Database
 
@@ -53,3 +45,31 @@ To use "server" backend, run:
 To use "backend" backend, run:
 `nodemon server`
 in backend folder.
+
+## Build with
+* TS
+* MongoDB
+
+## Feature
+
+* Authentication for user
+* Book management:
+  CRUD function for finished reading books, current reading books, dropped books and wishlist.
+  Change status of book between wishlist, reading and dropped/finished.
+
+## Live action
+
+![Book GIF](https://media.giphy.com/media/ftqS2jVIncVf49Yveu/giphy.gif)
+
+## Note
+
+These folders belowed just stayed as study purpose of Angular 8.
+These are no relationship whatsoever between them and the bookie app.
+
+* recipe
+* shopping list
+* shared/ingredient.model
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
