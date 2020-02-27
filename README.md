@@ -57,7 +57,7 @@ in backend folder.
   CRUD function for finished reading books, current reading books, dropped books and wishlist.
   Change status of book between wishlist, reading and dropped/finished.
 
-## Live action
+## Live demo
 
 ![Book GIF](https://media.giphy.com/media/huVL10nTHQW0KPK37H/giphy.gif)
 
