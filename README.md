@@ -1,4 +1,4 @@
-# Bookie - Angular
+# Bookie - Angular <a href="https://snyk.io/test/github/huongvu2312/bookie_angular?targetFile=package.json"><img src="https://snyk.io/test/github/huongvu2312/bookie_angular/badge.svg?targetFile=package.json" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/huongvu2312/bookie_angular?targetFile=package.json" style="max-width:100%;"></a>
 
 A book management application built with [Angular 8.3.17](https://github.com/angular/angular)
 
