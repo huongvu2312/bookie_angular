@@ -32,7 +32,7 @@
     "mongoose": "^5.9.7",
     "mongoose-auto-increment": "^5.0.1",
     "tslib": "^1.11.1",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.10.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.901.0",
