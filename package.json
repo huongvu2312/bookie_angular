@@ -28,8 +28,13 @@
     "cors": "^2.8.5",
     "faker": "^4.1.0",
     "hammerjs": "^2.0.8",
+<<<<<<< HEAD
     "json-server": "^0.15.1",
     "mongoose": "^5.9.19",
+=======
+    "json-server": "^0.16.1",
+    "mongoose": "^5.9.7",
+>>>>>>> 996d6dae6178942e137f25d211a2c5abca111ca6
     "mongoose-auto-increment": "^5.0.1",
     "tslib": "^1.13.0",
     "zone.js": "~0.9.1"
